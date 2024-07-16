@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router';
 
 <template>
   <nav class="back">
-    <RouterLink to="/">&#60; Home</RouterLink>
+    <RouterLink to="/" replace>&#60; Home</RouterLink>
   </nav>
 </template>
 
