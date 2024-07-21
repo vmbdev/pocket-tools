@@ -1,27 +1,17 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, computed } from 'vue';
 import HomeButton from '../components/HomeButton.vue';
 
-const measurer = ref<HTMLElement | null>(null);
-const inchSize = ref<number>(96);
-const cmSize = computed<number>(() => inchSize.value / 2.54);
-const mmSize = computed<number>(() => cmSize.value / 10);
+const inchSize = ref<number>(96 * window.devicePixelRatio);
+const cmSize = computed<number>(() => Math.ceil(inchSize.value / 2.54));
+const mmSize = computed<number>(() => Math.ceil(cmSize.value / 10));
 const rulerLength = computed<number>(() => Math.ceil(screen.height / inchSize.value));
 const rulerLengthInCM = computed<number>(() => Math.ceil(screen.height / cmSize.value));
 const rulerLengthInMM = computed<number>(() => Math.ceil(screen.height / mmSize.value));
-
-onMounted(() => {
-  if (measurer.value) {
-    inchSize.value = measurer.value.offsetHeight * window.devicePixelRatio;
-  }
-});
 </script>
 
 <template>
-  <div ref="measurer" class="measurer"></div>
-
   <HomeButton />
-
   <div class="rulers">
     <div class="ruler">
       <div
@@ -54,19 +44,11 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-$ruler-width: 28vw;
-
-.measurer {
-  height: 1in;
-  width: 1in;
-  left: 100%;
-  position: fixed;
-  top: 100%;
-}
+$ruler-width: calc(1in + 2rem);
 
 .rulers {
   position: fixed;
-  top: 0;
+  top: 2rem;
   left: 0;
   background-color: #ffd60a;
   width: $ruler-width;
@@ -75,7 +57,7 @@ $ruler-width: 28vw;
 
 .ruler {
   position: fixed;
-  top: 0;
+  top: 2rem;
   left: 0;
   width: $ruler-width;
   height: 100%;
@@ -97,8 +79,6 @@ $ruler-width: 28vw;
   }
 
   &-inch {
-    width: 1in;
-    height: 1in;
     border-color: #000814;
     border-top-style: dashed;
     color: #000814;
@@ -113,8 +93,6 @@ $ruler-width: 28vw;
   }
 
   &-cm {
-    // width: 1cm;
-    // height: 1cm;
     border-color: #000814;
     color: #000814;
 
@@ -128,8 +106,6 @@ $ruler-width: 28vw;
   }
 
   &-mm {
-    width: 1mm;
-    height: 1mm;
     border-color: #000814;
   }
 }

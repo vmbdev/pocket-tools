@@ -3,17 +3,19 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-  <div class="home">
+  <main class="home">
     <img src="@/assets/logo/pockettools-256.png" alt="Pocket Tools" />
     <section class="menu">
       <header class="title">Pocket Tools</header>
-      <ul>
-        <li><RouterLink to="/ruler">Ruler</RouterLink></li>
-        <li><RouterLink to="/level">Level</RouterLink></li>
-        <li><RouterLink to="/compass">Compass</RouterLink></li>
-      </ul>
+      <nav>
+        <ul>
+          <li><RouterLink to="/ruler">Ruler</RouterLink></li>
+          <li><RouterLink to="/level">Level</RouterLink></li>
+          <li><RouterLink to="/compass">Compass</RouterLink></li>
+        </ul>
+      </nav>
     </section>
-  </div>
+  </main>
 </template>
 
 <style lang="scss" scoped>
