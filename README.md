@@ -1,6 +1,6 @@
 # Pocket Tools
 
-![Pocket Tools](https://raw.githubusercontent.com/vmbdev/pocket-tools/main/src/assets/ogpocketttols.png)
+![Pocket Tools](https://raw.githubusercontent.com/vmbdev/pocket-tools/main/src/assets/ogpockettools.png)
 
 **Pocket Tools** brings to your phone a bunch of simple, real life tools
 without paying, ads or third-party cookies.
